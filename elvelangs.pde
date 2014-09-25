@@ -173,7 +173,7 @@ void draw() {
   // create the polygon from the blobs (custom functionality, see class)
   poly.createPolygon();
   // create the box2d body from the polygon
-  poly.createBody();
+  poly.createBody(true);
   // update and draw everything (see method)
   updateAndDrawBox2D();
   // destroy the person's body (important!)
@@ -195,9 +195,9 @@ void updateAndDrawBox2D() {
    * Set where the shapes are comeing in the costumshape constructor.
    *
    */
-  if (frameRate > 18 && frameCount % 3 == 0) {
+  if (frameRate > 18 && frameCount % 13 == 0) {
     CustomShape shape1 = new CustomShape(-50, kinectHeight/2, -1,BodyType.DYNAMIC) ;
-    CustomShape shape2 = new CustomShape(-50, kinectHeight/2, random(2.5, 20),BodyType.DYNAMIC);
+    CustomShape shape2 = new CustomShape(-50, kinectHeight/2, random(5, 35),BodyType.DYNAMIC);
      //CustomShape shape1 = new CustomShape(kinectWidth/2, -50, -1,BodyType.DYNAMIC) ;
      //CustomShape shape2 = new CustomShape(kinectWidth/2, -50, random(2.5, 20),BodyType.DYNAMIC);
     polygons.add(shape1);
@@ -270,6 +270,7 @@ void saveBackground() {
     bgDepthMap[i] = 10000;
   }
   for (int i = 0; i < 90; i++) {
+    ellipse(0,0,height,width);
     context.update();
     bgTemp = context.depthMap();
 
@@ -312,6 +313,18 @@ void printFrameRate() {
   */
   if (frameCount % 11 == 0) println(frameRate);
 }
+
+
+
+void keyPressed() {
+  switch (key) {
+    case 'b': println("saving background.");
+              saveBackground();
+              println("saved background.");
+              break;
+  }
+}
+
 
 
 void drawBlobsAndEdges(boolean drawBlobs, boolean drawEdges) {
