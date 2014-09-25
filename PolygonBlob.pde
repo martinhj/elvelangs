@@ -8,22 +8,24 @@ class PolygonBlob extends Polygon2D {
  
   // the createPolygon() method is nearly identical to the one presented earlier
   // see the Kinect Flow Example for a more detailed description of this method (again, feel free to improve it)
-  void createPolygon() {
+  void createPolygon(int blobNumber) {
     ArrayList<ArrayList<PVector>> contours = new ArrayList<ArrayList<PVector>>();
     int selectedContour = 0;
     int selectedPoint = 0;
  
     // create contours from blobs
-    for (int n=0 ; n<theBlobDetection.getBlobNb(); n++) {
+    boolean blobSearch = true;
+    if (lastBlob < theBlobDetection.getBlobNb()) {
+      println(lastBlob + " | " + theBlobDetection.getBlobNb());
+    for (int n=lastBlob ; blobSearch; n++) {
       Blob b = theBlobDetection.getBlob(n);
       if (b != null && b.getEdgeNb() > 100) {
+        blobSearch = false;
         ArrayList<PVector> contour = new ArrayList<PVector>();
         for (int m=1; m<b.getEdgeNb(); m++) {
           EdgeVertex eA = b.getEdgeVertexA(m);
           EdgeVertex eB = b.getEdgeVertexB(m);
           if (eA != null && eB != null) {
-            /*EdgeVertex fn = b.getEdgeVertexA((m+1) % b.getEdgeNb());
-            EdgeVertex fp = b.getEdgeVertexA((max(0, m-1)));*/
             
             EdgeVertex fn = b.getEdgeVertexA((m+1) % b.getEdgeNb());
             
@@ -44,7 +46,11 @@ class PolygonBlob extends Polygon2D {
             }
           }
         }
+        lastBlob = n+1;
+        break;
       }
+      if (n >= theBlobDetection.getBlobNb() - 1) blobSearch = false;
+    }
     }
     
     while (contours.size() > 0) {
@@ -104,9 +110,10 @@ class PolygonBlob extends Polygon2D {
   void createBody(boolean t) {
     BodyDef bd = new BodyDef();
     body = box2d.createBody(bd);
+    if (getNumPoints() > 0) println(getNumPoints());
     if (getNumPoints() > 0) {
    
-      Vec2[] verts = new Vec2[getNumPoints()/4];
+      Vec2[] verts = new Vec2[getNumPoints()/2];
       for (int i=0; i<getNumPoints()/4; i++) {
         Vec2D v = vertices.get(i*4);
         verts[i] = box2d.coordPixelsToWorld(v.x, v.y);

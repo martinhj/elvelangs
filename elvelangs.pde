@@ -22,6 +22,10 @@ BlobDetection theBlobDetection;
 ToxiclibsSupport gfx;
 // declare custom PolygonBlob object (see class for more info)
 PolygonBlob poly;
+PolygonBlob poly2;
+PolygonBlob [] polys = new PolygonBlob [100];
+
+int lastBlob = 0;
  
 // PImage to hold incoming imagery and smaller one for blob detection
 PImage blobs;
@@ -169,15 +173,27 @@ void draw() {
   // detect the blobs
   theBlobDetection.computeBlobs(blobs.pixels);
   // initialize a new polygon
+  for (int i = 0; i < polys.length; i++) {
+    polys[i] = new PolygonBlob();
+  }
   poly = new PolygonBlob();
   // create the polygon from the blobs (custom functionality, see class)
-  poly.createPolygon();
+  poly.createPolygon(0);
+  for (int i = 0; i < polys.length; i++) {
+    polys[i].createPolygon(0);
+  }
   // create the box2d body from the polygon
   poly.createBody(true);
+  for (int i = 0; i < polys.length; i++) {
+    polys[i].createBody(true);
+  }
   // update and draw everything (see method)
   updateAndDrawBox2D();
   // destroy the person's body (important!)
   poly.destroyBody();
+  for (int i = 0; i < polys.length; i++) {
+    polys[i].destroyBody();
+  }
   // set the colors randomly every 240th frame
   //setRandomColors(240);
   //image(blobs, 0, 0, width, height);
@@ -219,6 +235,10 @@ void updateAndDrawBox2D() {
   noStroke();
   fill(color(255,0,0));
   gfx.polygon2D(poly);
+  fill(color(0,255,0));
+  for (int i = 0; i < polys.length; i++) {
+    gfx.polygon2D(polys[i]);
+  }
  
   // display all the shapes (circles, polygons)
   // go backwards to allow removal of shapes
