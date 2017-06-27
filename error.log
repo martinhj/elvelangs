@@ -1,0 +1,140 @@
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.RuntimeException: Vertices of chain shape are too close together
+I caught: java.lang.AssertionError
+I caught: java.lang.RuntimeException: Vertices of chain shape are too close together
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.RuntimeException: Vertices of chain shape are too close together
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.RuntimeException: Vertices of chain shape are too close together
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.RuntimeException: Vertices of chain shape are too close together
+I caught: java.lang.AssertionError
+I caught: java.lang.RuntimeException: Vertices of chain shape are too close together
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+I caught: java.lang.AssertionError
+Got cancelled transfer, but we didn't request it - device disconnected?
+USB camera marked dead, stopping streams
+send_cmd: Output control transfer failed (-4)
+libc++abi.dylib: terminating with uncaught exception of type std::runtime_error: Cannot process freenect events (libusb error code: -1)
+Could not run the sketch (Target VM failed to initialize).
+For more information, read revisions.txt and Help → Troubleshooting.
+Could not run the sketch.
+ on 9ef4ddf[~/dev/processing/elvelangs] 2014-09-27 14:02:43.636 MacVim[16571:534977] Communications error: <OS_xpc_error: <error: 0x7fff75576b60> { count = 1, contents =
+  "XPCErrorDescription" => <string: 0x7fff75576fa8> { length = 22, contents = "Connection interrupted" }
+ }>

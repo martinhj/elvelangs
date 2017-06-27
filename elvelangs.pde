@@ -1,7 +1,7 @@
 // Kinect Physics Example by Amnon Owed (15/09/12)
 
 //edited by Arindam Sen
- 
+
 // import libraries
 import processing.opengl.*; // opengl
 import SimpleOpenNI.*; // kinect
@@ -26,7 +26,7 @@ PolygonBlob poly2;
 PolygonBlob [] polys = new PolygonBlob [100];
 
 int lastBlob = 0;
- 
+
 // PImage to hold incoming imagery and smaller one for blob detection
 PImage blobs;
 // the kinect's dimensions to be used later on for calculations
@@ -36,7 +36,7 @@ PImage cam = createImage(640, 480, RGB);
 
 // to center and rescale from 640x480 to higher custom resolutions
 float reScale;
- 
+
 // background and blob color
 color bgColor, blobColor;
 color black = color(0,0,0);
@@ -49,17 +49,17 @@ int [] depthMap, bgDepthMap;
 
 // three color palettes (artifact from me storingmany interesting color palettes as strings in an external data file ;-)
 String[] palettes = {
-  "-1117720,-13683658,-8410437,-9998215,-1849945,-5517090,-4250587,-14178341,-5804972,-3498634", 
-  "-67879,-9633503,-8858441,-144382,-4996094,-16604779,-588031", 
+  "-1117720,-13683658,-8410437,-9998215,-1849945,-5517090,-4250587,-14178341,-5804972,-3498634",
+  "-67879,-9633503,-8858441,-144382,-4996094,-16604779,-588031",
   "-1978728,-724510,-15131349,-13932461,-4741770,-9232823,-3195858,-8989771,-2850983,-10314372"
 };
 color[] colorPalette;
- 
+
 // the main PBox2D object in which all the physics-based stuff is happening
 Box2DProcessing box2d;
 // list to hold all the custom shapes (circles, polygons)
 ArrayList<CustomShape> polygons = new ArrayList<CustomShape>();
- 
+
 void setup() {
   println("SET UP");
   // it's possible to customize this, for example 1920x1080
@@ -68,11 +68,11 @@ void setup() {
   //smooth(8);
 
   // initialize SimpleOpenNI object
-  if (!context.enableDepth() || !context.enableUser()) { 
+  if (!context.enableDepth() || !context.enableUser()) {
     // if context.enableScene() returns false
     // then the Kinect is not working correctly
     // make sure the green light is blinking
-    println("Kinect not connected!"); 
+    println("Kinect not connected!");
     exit();
   } else {
     // mirror the image to be more intuitive
@@ -102,7 +102,7 @@ void setup() {
     //box2d.setGravity(0, -40);
     // set random colors (background, blob)
     setRandomColors(1);
-    
+
     float gap = kinectWidth / 21;
     for (int i=0; i<20; i++)
     {
@@ -113,12 +113,12 @@ void setup() {
 }
 
 void drawString(float x, float size, int cards) {
-  
+
   float gap = kinectHeight/cards;
   // anchor card
   CustomShape s1 = new CustomShape(x, -40, size, BodyType.DYNAMIC);
   polygons.add(s1);
-  
+
   CustomShape last_shape = s1;
   CustomShape next_shape;
   for (int i=0; i<cards; i++)
@@ -139,7 +139,7 @@ void drawString(float x, float size, int cards) {
     last_shape = next_shape;
   }
 }
- 
+
 void draw() {
   background(bgColor);
   background(0);
@@ -148,8 +148,8 @@ void draw() {
 
   depthMap = context.depthMap();
   cam = context.depthImage();
-  
-  ///*
+
+  /*
   cam.loadPixels();
   for (int i = 0; i < cam.pixels.length; i++) {
     if (depthMap[i] > bgDepthMap[i] - 100) {
@@ -157,7 +157,7 @@ void draw() {
     }
   }
   cam.updatePixels();
-  //*/
+  */
 
 
   // copy the image into the smaller blob image
@@ -200,11 +200,11 @@ void draw() {
   printFrameRate();
   drawBlobsAndEdges(false,true);
 }
- 
+
 void updateAndDrawBox2D() {
   // if frameRate is sufficient, add a polygon and a circle with a random radius
 
-  
+
 
   /*
    *
@@ -221,17 +221,17 @@ void updateAndDrawBox2D() {
   }
   // take one step in the box2d physics world
   box2d.step();
- 
+
   // center and reScale from Kinect to custom dimensions
   translate(0, (height-kinectHeight*reScale)/2);
   scale(reScale);
- 
- 
+
+
   /*
-   * 
+   *
    * // display the person's polygon
    *
-   */  
+   */
   noStroke();
   fill(color(255,0,0));
   gfx.polygon2D(poly);
@@ -239,14 +239,14 @@ void updateAndDrawBox2D() {
   for (int i = 0; i < polys.length; i++) {
     gfx.polygon2D(polys[i]);
   }
- 
+
   // display all the shapes (circles, polygons)
   // go backwards to allow removal of shapes
   for (int i=polygons.size()-1; i>=0; i--) {
     CustomShape cs = polygons.get(i);
     // if the shape is off-screen remove it (see class for more info)
-    
-    
+
+
     if (cs.done()) {
       polygons.remove(i);
     // otherwise update (keep shape outside person) and display (circle or polygon)
@@ -256,7 +256,7 @@ void updateAndDrawBox2D() {
     }
   }
 }
- 
+
 // sets the colors every nth frame
 void setRandomColors(int nthFrame) {
   if (frameCount % nthFrame == 0) {
@@ -275,7 +275,7 @@ void setRandomColors(int nthFrame) {
     for (CustomShape cs: polygons) { cs.col = getRandomColor(); }
   }
 }
- 
+
 // returns a random color from the palette (excluding first aka background color)
 color getRandomColor() {
   return color(255,255,255);
@@ -369,7 +369,7 @@ void drawBlobsAndEdges(boolean drawBlobs, boolean drawEdges) {
           eB = b.getEdgeVertexB(m);
           if (eA !=null && eB !=null)
             line(
-                eA.x*drawWidth, eA.y*drawHeight, 
+                eA.x*drawWidth, eA.y*drawHeight,
                 eB.x*drawWidth, eB.y*drawHeight
                 );
         }
@@ -382,7 +382,7 @@ void drawBlobsAndEdges(boolean drawBlobs, boolean drawEdges) {
         if (b.w*b.h > 0.02f) stroke(255, 0, 0);
         if (b.w*b.h <= 0.02f) stroke(0,0,255);
         if (b.w*b.h > 0.02f) rect(
-            b.xMin*drawWidth, b.yMin*drawHeight, 
+            b.xMin*drawWidth, b.yMin*drawHeight,
             b.w*drawWidth, b.h*drawHeight
             );
         /*ellipse(b.xMin*width+b.w*width/2, b.yMin*height+b.h*height/2, 5,5);*/
